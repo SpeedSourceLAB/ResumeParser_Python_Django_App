@@ -1,0 +1,18 @@
+<!Screen3 html>
+
+<html>
+<head>
+<br>
+<body>
+<form action="{% url 'upload-file' %}">{% csrf_token %}
+
+<center><h1 style="font-size:250%;">Resume Portal</h1>
+
+<p><font size="5"><i>Congratulations!! You have successfully uploaded your resume.</i></font>
+
+<br> <br> <input id="backToHome"   type="Submit" value="Home Page" onclick="msg()">
+</p>
+</center>
+</form>
+</body>
+</html>

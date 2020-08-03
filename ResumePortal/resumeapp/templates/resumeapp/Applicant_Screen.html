@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Data</title>
+<br>
+<center><h1><h1 style="font-size:250%;">Resume Portal</h1>
+    <font size="5"><i>Please Review Details Before Submitting</i><font>
+
+<style>
+
+table, th, td {
+  border: 1px solid white;
+  ma
+</center>
+</head>rgin-left:200px;
+  margin-top:-230px;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+</style>
+
+
+<style>
+sup {
+ color:red;
+}
+</style>
+<body>
+
+<form name="applicantForm" method="post" action="{% url 'upload-page3' %}">{% csrf_token %}
+
+<center>
+<table style="width:50%">
+
+  <tr>
+
+    <font size="2.1"><sup>*</sup>These fields are required</font>
+
+    <th><font size="4"><sup>*</sup> First Name</font></th>
+    <td><input type="text" name="name" id="name" value="" size="27" required></td> </tr><br>
+
+    <th><font size="4"><sup>*</sup> Last Name</font></th>
+    <td><input type="text" name="lname" id="lname" value="" size="27"  required> </td></tr><br>
+
+    <th><font size="4">Address</font></th>
+    <td><input type="text" name="addr" id="addr" value="" size="27" > </td></tr><br>
+
+    <th><font size="4"><sup>*</sup> Phone Number</font></th>
+    <td><input type="text" name="mobile_number" id="mobile_number" value="" size="27" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></td></tr><br>
+
+
+    <th><font size="4"><sup>*</sup> Email Address</font></th>
+    <td><input type="email" name="email" id="email" value="" size="27"  required></td></tr><br>
+
+
+    <th><font size="4"><sup>*</sup> Education</font></th>
+    <td><input type="text" name="degree" id="degree" value="" size="27" required></td></tr><br>
+
+
+    <th><font size="4"><sup>*</sup> Technical Skill Set</font></th>
+    <td><input type="text" name="skills" id="skills" value="" size="27" required></td></tr><br>
+
+
+   <th><font size="4">&nbsp;&nbsp;&nbsp;Work Experience</font></th>
+    <td><input type="text" name="total_experience" id="total_experience" value="" size="27"></td></tr><br>
+
+    <th><font size="4"><sup>*</sup> Employment Authorisation</font></th>
+    <td><input type="text" name="visa_status" id="visa_status" value="" size="27" required></td></tr><br>
+
+</table>
+</center>
+
+
+
+<br>
+  <input type="submit" id="Subtn" value="Submit" > &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <input type="button" value="Back To Home Page" onclick="msg1()"> <br>
+
+</form>
+</body>
+</html>
+
+<script>
+
+{% load static %}
+
+function myFunction()
+{
+                alert("Please Check & Fill The Mandatory Fields !");
+
+}
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function()
+{
+  if (this.readyState == 4 && this.status == 200)
+   {
+               var myObj = JSON.parse(this.responseText);
+               document.getElementById("name").value=     myObj.name;
+               document.getElementById("lname").value=     myObj.LastName;
+               document.getElementById("addr").value=      myObj.Address;
+               document.getElementById("mobile_number").value=      myObj.mobile_number;
+               document.getElementById("email").value=     myObj.email;
+               document.getElementById("degree").value=        myObj.degree;
+               document.getElementById("skills").value= myObj.skills;
+               document.getElementById("total_experience").value=    myObj.total_experience;
+               document.getElementById("visa_status").value=   myObj.EmploymentAuthorization;
+
+
+
+               var mobile_number_format = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                var emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+               //Validating Mandatory Fields
+
+             if ((document.getElementById("name").value == null) || (document.getElementById("name").value == "") ||
+                 (document.getElementById("lname").value == null) || (document.getElementById("lname").value == "") ||
+                 (document.getElementById("mobile_number").value == null) || (document.getElementById("mobile_number").value == "" )  ||
+                 (!(document.getElementById("mobile_number").value).match(mobile_number_format))||
+                 (!(document.getElementById("email").value).match(emailformat))||
+                 (document.getElementById("email").value == null) || (document.getElementById("email").value == "") ||
+                 (document.getElementById("degree").value== null) || (document.getElementById("degree").value=="") ||
+                 (document.getElementById("techskill").value == null) || (document.getElementById("techskill").value =="")||
+                 (document.getElementById("visa_status").value == null) || (document.getElementById("visa_status").value ==""))
+                {
+                filled=false;
+                document.getElementById("Subtn").disabled=true;
+                //alert("Please Fill The Mandatory Fields !");
+                //myFunction();
+                setTimeout(myFunction, 100);
+                }
+
+                else
+                {
+                document.getElementById("name").readOnly = false;
+                document.getElementById("lname").readOnly = false;
+                document.getElementById("addr").readOnly = false;
+                document.getElementById("mobile_number").readOnly = false;
+                document.getElementById("email").readOnly = false;
+                document.getElementById("degree").readOnly = false;
+                document.getElementById("techskill").readOnly = false;
+                document.getElementById("total_experience").readOnly = false;
+                document.getElementById("visa_status").readOnly = false;
+                }
+
+                function check()
+                {
+                 var inputs = document.getElementsByTagName("input");
+                 var textareas = document.getElementsByTagName("textarea");
+                 var filled = true;
+
+                for (var i = 0; i < inputs.length; i++)
+                 {
+                if (inputs[i].type === "text" && !inputs[i].value) {
+                filled = false;
+                 }
+                 }
+
+                for (var j = 0; j < textareas.length; j++) {
+                if (!textareas[j].value) {
+                filled = false;
+                }
+                }
+
+                 var mobile_number_format = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                var emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+              if (!(document.getElementById("mobile_number").value).match(mobile_number_format))
+              {
+                            filled = false;
+              }
+
+            if (!(document.getElementById("email").value).match(emailformat))
+            {
+                          filled = false;
+            }
+
+                if (filled) {
+                document.getElementById("Subtn").disabled = false;
+                }
+               }
+
+                window.addEventListener("keyup", check);
+                window.addEventListener("click", check);
+
+                var mobile_number_format = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                var emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                 if (!(document.getElementById("email").value).match(emailformat))
+                 {
+                 document.getElementById("mobile_number").style.background="#FE2E64";
+                 }
+                 if (!(document.getElementById("email").value).match(emailformat))
+                 {
+                             document.getElementById("email").style.background="#FE2E64";
+
+                 }
+}
+};
+xmlhttp.open("GET","{% static "Doc_JSON2.json" %}", true);
+xmlhttp.send();
+</script>
