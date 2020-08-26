@@ -11,37 +11,35 @@
 <br>
 <br>
 <center><h1 style="font-size:250%;">Resume Portal</h1></center>
-<p>
-<center>
-<font> <font size="5">
-<!--<marquee behavior="scroll" direction="left"><i>
-Please make sure to use our template for higher accuracy and hassle free upload</i>
-</marquee>-->
-</font>
-</center>
-</p>
 
 <br><br><br>
 <center>
-<h2><font> <font size="5"><i>Upload Your Resume</i></font></h2><br>
+<h2> <font size="5"><i>Upload Your Resume</i></font></h2><br>
 <form enctype="multipart/form-data" method="post" action="{% url 'upload-page2' %}">{% csrf_token %}
 <!--   <p><label for="img">Choose your resume :</label>
        <input type="file" name="file1" size="100" /></p> <br><br>-->
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-    <input id="txt" type = "text" value = "Choose File" size="40" align="center"
-       onclick ="javascript:document.getElementById('file').click();">
-        <input id = "file" type="file" style='visibility: hidden;' accept=".doc, .docx" name="file1" onchange="ChangeText(this, 'txt'); Filevalidation()"><br><br>
-    <input type="file" name="file1" accept=".doc, .docx"><br><br>
-<br>
-    <p>
-         <a href="media/Sample_Resume_Format.docx">Resume Template For Your Reference</a>
- </p>
+     &nbsp;&nbsp;&nbsp;
+    <!--<input id="txt" type = "text" value = "Choose File" size="40" align="center"
+       onclick ="javascript:document.getElementById('file').click();"> -->
+    <input id = "file" type="file" style='visibility: hidden;' accept=".doc, .docx" name="file1" onchange="ChangeText(this, 'txt'); Filevalidation()"><br><br>
+    <input type="file" name="file1" accept=".doc, .docx"><br>
 
     <br><input id="upload" type="submit" value="Upload">&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="reset" value="Cancel" onclick="msg()"><br>
 
    <!-- <img src="Downloads/DataPiratesLogo.jpg" alt="DP Icon">-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'job-search' %}">Job Search</a>
+
+   <!-- <form enctype="multipart/form-data" method="post" action="{% url 'job-search' %}">{% csrf_token %}
+     <p>
+         <a href="{% url 'job-search' %}">Job Search</a>
+     </p>
+    </form> -->
+
 </form>
 
 </body>

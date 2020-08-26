@@ -91,7 +91,7 @@ sup {
 
 function myFunction()
 {
-                alert("Please Check & Fill The Mandatory Fields !");
+                alert("Some of the fields are filled from your from your resume, please recheck them and complete the remaining fields");
 
 }
 
@@ -129,8 +129,8 @@ xmlhttp.onreadystatechange = function()
                 {
                 filled=false;
                 document.getElementById("Subtn").disabled=true;
-                //alert("Please Fill The Mandatory Fields !");
-                //myFunction();
+                alert("Please Fill The Mandatory Fields !");
+                myFunction();
                 setTimeout(myFunction, 100);
                 }
 

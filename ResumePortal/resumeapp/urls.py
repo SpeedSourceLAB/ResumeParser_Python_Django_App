@@ -9,7 +9,8 @@ urlpatterns =[
     url(r'^$', views.upload_page,name='upload-file'),
     url(r'^ApplicantDetails', views.applicant_file,name='upload-page2'),
     url(r'^Thankyou', views.uploaded_to_db,name='upload-page3'),
-
+    url(r'^JobSearch', views.job_search, name='job-search'),
+    url(r'^JobList', views.job_list, name='job-list'),
 ]
 
 if settings.DEBUG:

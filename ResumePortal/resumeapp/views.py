@@ -48,7 +48,7 @@ def applicant_file(request):
         print(loaded_json)
 
         # converting into .JSON file for .HTML
-        with open('C:\\Users\\prade\\PycharmProjects\\ResumePortal\\resumeapp\\templates\\resumeapp\\Doc_JSON2.json',
+        with open('C:\\Users\\prade\\PycharmProjects\\ResumePortal\\resumeapp\\templates\\resumeapp\\Resume_details.json',
                   'w') as fp:
             json.dump(loaded_json, fp)
         return render(request, 'resumeapp/Applicant_Screen.html')
