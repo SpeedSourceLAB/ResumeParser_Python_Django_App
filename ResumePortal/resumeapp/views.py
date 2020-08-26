@@ -42,9 +42,6 @@ def applicant_file(request):
         parsed_details = ResumeParser(latest_file).get_extracted_data()
         print(parsed_details)
         resume_dict =  parsed_details
-        #resume_dict = {x.translate({32: None}): y
-        #               for x, y in list(parsed_details.items())}
-        print(resume_dict)
 
         # Converting to JSON
         loaded_json = json.loads(json.dumps(resume_dict))
@@ -95,44 +92,22 @@ def job_list(request):
 
     #Drop Duplicates
     df = df.drop_duplicates(subset=['Company Name'])
-    #df = df.drop_duplicates(subset=['Job Title', 'Job Location', 'Company Name'])
-    #df = df.drop_duplicates(subset = ['Job Title'])
-    #breakpoint()
-    #print(df)
 
     #change the column names to lowercase and replace spaces with underscore
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
     print(df)
+
     # Create new df that shows the jobs with email address and phoneno.s at the beginning
     df1 = pandas.DataFrame()
     df1 = df1.append(df[(df["job_email"].notnull()) | (df["job_phone_no"].notnull())])
     df1 = df1.append(df[(df["job_email"].isnull()) & (df["job_phone_no"].isnull())])
-    #df1 = df1.append(df[df["job_email"].isnull()])
 
     data_dict=df1.to_dict('records')
-    #print(data_dict)
-    # i=0
-    allData = []
-    # for row in df.iterrows():
-    #     if(i!=0):
-    #         print(row)
-    #         allData.append(dict(row))
-    #     i+=1
-    #breakpoint()
-    # for i in range(1,df.shape[0],2):
-    #     #breakpoint()
-    #     temp = df.loc[i]
-    #     allData.append(dict(temp))
-    #     print(allData)
-        #print(allData[0])
-    #context = {'df': allData}
+
     context = {
         'dict' : data_dict,
         'selected_category': job_category,
         'selected_location': job_loc
     }
-    #html = df.to_html()
-    #text_file = open("resumeapp\\templates\\resumeapp\\resumeapp\\index.html", "w")
-    #text_file.write(html)
-    #text_file.close()
+
     return render(request,'resumeapp/Job_Search_Results.html',context)
