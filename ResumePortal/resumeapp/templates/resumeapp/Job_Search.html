@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<!--<form action="//" method="post" onsubmit="return Checkfiles();" >-->
+<form name="jobsearch" method="post" action="{% url 'job-list' %}">{% csrf_token %}
+
+     <h1 align="center">Welcome to Job Portal</h1>
+    <br>
+    <br>
+    <br>
+<table align="center">
+    <tr>
+        <td>
+         <label for="jobcategory">Job Category:</label>
+
+            <select name="jobcategory" id="jobcategory">
+                    <option value="pythondeveloper">Python Developer</option>
+                    <option value="Python/Django Developer">Python/Django Developer</option>
+                    <option value="sdet">SDET</option>
+                    <option value="QA">QA</option>
+                    <option value="java">Java</option>
+            </select>
+        </td>
+
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td>
+         <label for="joblocation">Job Location</label>
+
+            <select name="joblocation" id="joblocation">
+                <option value="newyork">NewYork</option>
+                <option value="chicago">Chicago</option>
+                <option value="Franklin, TN">Franklin, TN</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Franklin-TN">Franklin-TN</option>
+                <option value="New York">New York</option>
+            </select>
+        </td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td colspan=4 with="80%"><hr></td>
+        <td><button class="w3-btn w3-blue">submit</button></td>
+    </tr>
+</table></form>
+</body>
+</html>
