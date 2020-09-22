@@ -21,6 +21,7 @@ def upload_page(request):
 #Open job search page
 def job_search(request):
     print ("Job Search Page")
+    print("new build")
     return render(request, 'resumeapp/Job_Search.html')
 
 #Open  the applicant details page
